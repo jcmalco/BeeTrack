@@ -1,0 +1,32 @@
+<%= form_for(@gp) do |f| %>
+  <% if @gp.errors.any? %>
+    <div class="error_messages">
+      <h2><%= pluralize(@gp.errors.count, "error") %> este gps esta prohibido para ser guardado:</h2>
+      <ul>
+      <% @gp.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :latitude %><br />
+    <%= f.number_field :latitude, :class => 'text_field', :step => 0.000001 %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br />
+    <%= f.number_field :longitude, :class => 'text_field', :step => 0.000001 %>
+  </div>
+  <div class="field">
+    <%= f.label :sent_at %><br />
+    <%= f.text_field :sent_at %>
+  </div>
+  <div class="field">
+    <%= f.label :vehicle_identifier %><br />
+    <%= f.text_field :vehicle_identifier %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

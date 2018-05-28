@@ -1,0 +1,20 @@
+<h1>BeeTracker</h1>
+
+<table id="gps">
+  <tr>
+    <th>latitude</th>
+    <th>longitude</th>
+    <th>sent_at</th>
+    <th>vehicle_identifier</th>
+  </tr>
+  <% @gps.each do |gp| %>
+    <tr>
+      <td><%= gp.latitude %></td>
+      <td><%= gp.longitude %></td>
+      <td><%= gp.sent_at.strftime("%B %e, %Y") %></td>
+      <td><%= link_to(gp.vehicle_identifier, gp) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Nuevo GPS", new_gp_path %></p>

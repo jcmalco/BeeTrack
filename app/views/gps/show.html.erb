@@ -1,0 +1,41 @@
+<h1>lat:<%= @gp.latitude %>, lng:<%= @gp.longitude %></h1>
+
+<p>
+  <b>latitude:</b>
+  <%= @gp.latitude %>
+</p>
+
+<p>
+  <b>longitude:</b>
+  <%= @gp.longitude %>
+</p>
+
+<p>
+  <b>sent_at:</b>
+  <%= @gp.sent_at.strftime("%B %e, %Y") %>
+</p>
+
+<p>
+  <b>vehicle_identifier:</b>
+  <%= @gp.vehicle_identifier %>
+</p>
+
+<div id="map"></div>
+
+<%= link_to 'Editar', edit_gp_path(@gp) %> |
+<%= link_to 'Destroy', @gps, method: :delete, confirm: "Are you sure?" %> |
+<%= link_to 'Listar Gps', gps_path %>
+
+<script>
+  function initMap() {
+    var uluru = {lat: <%= @gp.latitude %>, lng: <%= @gp.longitude %>};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+</script>
